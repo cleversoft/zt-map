@@ -1,22 +1,27 @@
 <?php
 
 /**
- * @version          $Id$
- * @copyright        Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license          GNU General Public License version 2 or later; see LICENSE.txt
- * @author           Guillermo Vargas (guille@vargas.co.cr)
+ * @version       $Id$
+ * @copyright     Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
+ * @author        Guillermo Vargas (guille@vargas.co.cr)
+ * 
+ * @name        Zt Map
+ * @version     0.0.5
+ * @package     Joomla
+ * @subpackage  Component
+ * @author      ZooTemplate 
+ * @email       support@zootemplate.com 
+ * @link        http://www.zootemplate.com 
+ * @copyright   Copyright (c) 2015 ZooTemplate
+ * @license     GPL v2 
+ * 
  */
-// No direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
+// no direct access
+defined('_JEXEC') or die;
+
 
 jimport('joomla.application.component.view');
-
-# For compatibility with older versions of Joola 2.5
-if (!class_exists('JViewLegacy')){
-    class JViewLegacy extends JView {
-
-    }
-}
 
 /**
  * HTML Site map View class for the Xmap component
@@ -31,7 +36,7 @@ class XmapViewHtml extends JViewLegacy
     protected $state;
     protected $print;
 
-    function display($tpl = null)
+    public function display($tpl = null)
     {
         // Initialise variables.
         $this->app = JFactory::getApplication();
@@ -49,7 +54,8 @@ class XmapViewHtml extends JViewLegacy
         $this->canEdit = JFactory::getUser()->authorise('core.admin', 'com_xmap');
 
         // Check for errors.
-        if (count($errors = $this->get('Errors'))) {
+        if (count($errors = $this->get('Errors')))
+        {
             JError::raiseWarning(500, implode("\n", $errors));
             return false;
         }
@@ -63,29 +69,33 @@ class XmapViewHtml extends JViewLegacy
         // Create a shortcut to the paramemters.
         $params = &$this->state->params;
         $offset = $this->state->get('page.offset');
-        if ($params->get('include_css', 0)){
-            $doc->addStyleSheet(JURI::root().'components/com_xmap/assets/css/xmap.css');
+        if ($params->get('include_css', 0))
+        {
+            $doc->addStyleSheet(JURI::root() . 'components/com_xmap/assets/css/xmap.css');
         }
 
         // If a guest user, they may be able to log in to view the full article
         // TODO: Does this satisfy the show not auth setting?
-        if (!$this->item->params->get('access-view')) {
-            if ($user->get('guest')) {
+        if (!$this->item->params->get('access-view'))
+        {
+            if ($user->get('guest'))
+            {
                 // Redirect to login
                 $uri = JFactory::getURI();
                 $app->redirect(
-                    'index.php?option=com_users&view=login&return=' . base64_encode($uri),
-                    JText::_('Xmap_Error_Login_to_view_sitemap')
+                        'index.php?option=com_users&view=login&return=' . base64_encode($uri), JText::_('Xmap_Error_Login_to_view_sitemap')
                 );
                 return;
-            } else {
+            } else
+            {
                 JError::raiseWarning(403, JText::_('Xmap_Error_Not_auth'));
                 return;
             }
         }
 
         // Override the layout.
-        if ($layout = $params->get('layout')) {
+        if ($layout = $params->get('layout'))
+        {
             $this->setLayout($layout);
         }
 
@@ -114,16 +124,22 @@ class XmapViewHtml extends JViewLegacy
         $title = null;
 
         // Because the application sets a default page title, we need to get it from the menu item itself
-        if ($menu = $menus->getActive()) {
-            if (isset($menu->query['view']) && isset($menu->query['id'])) {
-            
-                if ($menu->query['view'] == 'html' && $menu->query['id'] == $this->item->id) {
+        if ($menu = $menus->getActive())
+        {
+            if (isset($menu->query['view']) && isset($menu->query['id']))
+            {
+
+                if ($menu->query['view'] == 'html' && $menu->query['id'] == $this->item->id)
+                {
                     $title = $menu->title;
-                    if (empty($title)) {
+                    if (empty($title))
+                    {
                         $title = $app->getCfg('sitename');
-                    } else if ($app->getCfg('sitename_pagetitles', 0) == 1) {
+                    } else if ($app->getCfg('sitename_pagetitles', 0) == 1)
+                    {
                         $title = JText::sprintf('JPAGETITLE', $app->getCfg('sitename'), $title);
-                    } else if ($app->getCfg('sitename_pagetitles', 0) == 2) {
+                    } else if ($app->getCfg('sitename_pagetitles', 0) == 2)
+                    {
                         $title = JText::sprintf('JPAGETITLE', $title, $app->getCfg('sitename'));
                     }
                     // set meta description and keywords from menu item's params
@@ -136,11 +152,13 @@ class XmapViewHtml extends JViewLegacy
         }
         $this->document->setTitle($title);
 
-        if ($app->getCfg('MetaTitle') == '1') {
+        if ($app->getCfg('MetaTitle') == '1')
+        {
             $this->document->setMetaData('title', $title);
         }
 
-        if ($this->print) {
+        if ($this->print)
+        {
             $this->document->setMetaData('robots', 'noindex, nofollow');
         }
     }
