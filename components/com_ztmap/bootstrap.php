@@ -20,8 +20,10 @@
 // no direct access
 defined('_JEXEC') or die;
 
-require_once 'bootstrap.php';
+// Include dependencies
+jimport('joomla.application.component.controller');
 
-$controller = JControllerLegacy::getInstance('Ztmap');
-$controller->execute(JRequest::getVar('task'));
-$controller->redirect();
+require_once(JPATH_COMPONENT . '/helpers/ztmap.php');
+require_once(JPATH_COMPONENT . '/displayer.php');
+
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');

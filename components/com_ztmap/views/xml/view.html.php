@@ -1,13 +1,24 @@
 <?php
 
 /**
- * @version             $Id$
- * @copyright           Copyright (C) 2005 - 2009 Joomla! Vargas. All rights reserved.
- * @license             GNU General Public License version 2 or later; see LICENSE.txt
- * @author              Guillermo Vargas (guille@vargas.co.cr)
+ * @version       $Id$
+ * @copyright     Copyright (C) 2007 - 2009 Joomla! Vargas. All rights reserved.
+ * @license       GNU General Public License version 2 or later; see LICENSE.txt
+ * @author        Guillermo Vargas (guille@vargas.co.cr)
+ * 
+ * @name        Zt Map
+ * @version     0.0.5
+ * @package     Joomla
+ * @subpackage  Component
+ * @author      ZooTemplate 
+ * @email       support@zootemplate.com 
+ * @link        http://www.zootemplate.com 
+ * @copyright   Copyright (c) 2015 ZooTemplate
+ * @license     GPL v2 
+ * 
  */
-// No direct access
-defined('_JEXEC') or die('Restricted access');
+// no direct access
+defined('_JEXEC') or die;
 
 jimport('joomla.application.component.view');
 
@@ -34,11 +45,11 @@ class ZtmapViewXml extends JViewLegacy
         $this->isImages = JRequest::getInt('images', 0);
 
         $model = $this->getModel('Sitemap');
-        
+
         $this->setModel($model);
 
-        
-        
+
+
         # Increase memory and max execution time for XML sitemaps to make it work
         # with very large sites
         @ini_set('memory_limit', '512M');
