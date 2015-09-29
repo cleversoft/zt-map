@@ -8,8 +8,8 @@
  * 
  * @name        Zt Map
  * @version     0.0.5
- * @package     Joomla
- * @subpackage  Component
+ * @package     Plugin
+ * @subpackage  Ztmap
  * @author      ZooTemplate 
  * @email       support@zootemplate.com 
  * @link        http://www.zootemplate.com 
