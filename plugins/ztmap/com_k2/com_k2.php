@@ -90,7 +90,6 @@ class ztmap_com_k2
         else
             self::$maxAccess = implode(",", JFactory::getUser()->getAuthorisedViewLevels());
 
-        echo ztmap_com_k2::getParam($link_vars, 'task', "");
         switch (ztmap_com_k2::getParam($link_vars, 'task', ""))
         {
             case "user":
