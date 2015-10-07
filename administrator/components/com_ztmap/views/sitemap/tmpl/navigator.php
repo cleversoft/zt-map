@@ -49,7 +49,7 @@ $doc->addScriptDeclaration('
     };
     window.addEvent("domready",function(){
         tree =  new MooTreeControl({ 
-        div: \'xmap-nav_tree\', 
+        div: \'ztmap-nav_tree\', 
         mode: \'files\',
         grid: true,
         theme: \'../media/media/images/mootree.gif\',
@@ -70,8 +70,8 @@ $doc->addScriptDeclaration('
     });
     ');
 ?>
-<div id="xmap-nav_tree" style="height:250px;overflow:auto;border:1px solid #CCC;"></div>
-<div id="xmap-nav_linkinfo" style="margin-top:3px;border:1px solid #CCC;height:120px;">
+<div id="ztmap-nav_tree" style="height:250px;overflow:auto;border:1px solid #CCC;"></div>
+<div id="ztmap-nav_linkinfo" style="margin-top:3px;border:1px solid #CCC;height:120px;">
     <form name="adminForm" action="#" onSubmit="return false;">
         <table width="100%">
             <tr>
@@ -101,4 +101,4 @@ $doc->addScriptDeclaration('
         </table>
     </form>
 </div>
-<ul id="xmap-nav"></ul>
+<ul id="ztmap-nav"></ul>

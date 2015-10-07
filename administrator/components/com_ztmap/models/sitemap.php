@@ -57,7 +57,7 @@ class ZtmapModelSitemap extends JModelAdmin
         // Load the User state.
         if (!($pk = (int) $app->getUserState('com_ztmap.edit.sitemap.id')))
         {
-            $pk = (int) JRequest::getInt('id');
+            $pk = (int) JFactory::getApplication()->input->getInt('id');
         }
         $this->setState('sitemap.id', $pk);
 

@@ -28,7 +28,7 @@ require_once JPATH_LIBRARIES . '/joomla/form/fields/list.php';
  *
  * @package      Ztmap
  * @subpackage   com_ztmap
- * @since        2.0
+ * @since        0.0.5
  */
 class JFormFieldZtmapmenus extends JFormFieldList
 {

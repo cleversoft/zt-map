@@ -23,7 +23,7 @@ defined('_JEXEC') or die;
 /**
  * @package         Ztmap
  * @subpackage      com_ztmap
- * @since           2.0
+ * @since           0.0.5
  */
 class ZtmapTableSitemap extends JTable
 {

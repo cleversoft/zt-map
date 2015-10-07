@@ -25,7 +25,7 @@ jimport('joomla.application.component.controllerform');
 /**
  * @package     Ztmap
  * @subpackage  com_ztmap
- * @since       2.0
+ * @since       0.0.5
  */
 class ZtmapControllerSitemap extends JControllerForm
 {

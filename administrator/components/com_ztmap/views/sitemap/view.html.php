@@ -39,7 +39,7 @@ class ZtmapViewSitemap extends JViewLegacy
      *
      * @access    public
      */
-    function display($tpl = null)
+    public function display($tpl = null)
     {
         $app = JFactory::getApplication();
         $this->state = $this->get('State');
@@ -71,7 +71,7 @@ class ZtmapViewSitemap extends JViewLegacy
      *
      * @access    public
      */
-    function navigator($tpl = null)
+    public function navigator($tpl = null)
     {
         require_once(JPATH_COMPONENT_SITE . '/helpers/ztmap.php');
         $app = JFactory::getApplication();
@@ -96,13 +96,13 @@ class ZtmapViewSitemap extends JViewLegacy
         parent::display($tpl);
     }
 
-    function navigatorLinks($tpl = null)
+    public function navigatorLinks($tpl = null)
     {
 
         require_once(JPATH_COMPONENT_SITE . '/helpers/ztmap.php');
         $link = urldecode(JRequest::getVar('link', ''));
         $name = JRequest::getCmd('e_name', '');
-        $Itemid = JRequest::getInt('Itemid');
+        $Itemid = JFactory::getApplication()->input->getInt('Itemid');
 
         $this->item = $this->get('Item');
         $this->state = $this->get('State');
@@ -181,7 +181,7 @@ class ZtmapViewSitemap extends JViewLegacy
      *
      * @access    private
      */
-    function _setToolbar()
+    private function _setToolbar()
     {
         $isNew = ($this->item->id == 0);
 

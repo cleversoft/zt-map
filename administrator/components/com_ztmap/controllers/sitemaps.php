@@ -55,9 +55,9 @@ class ZtmapControllerSitemaps extends JControllerAdmin
      * Method to toggle the default sitemap.
      *
      * @return      void
-     * @since       2.0
+     * @since       0.0.5
      */
-    function setDefault()
+    public function setDefault()
     {
         // Check for request forgeries
         JSession::checkToken() or die('Invalid Token');
@@ -80,6 +80,9 @@ class ZtmapControllerSitemaps extends JControllerAdmin
             // Publish the items.
             if (!$model->setDefault($id))
             {
+                /**
+                 * @todo JError::raiseWarning() is deprecated
+                 */
                 JError::raiseWarning(500, $model->getError());
             }
         }
@@ -95,7 +98,7 @@ class ZtmapControllerSitemaps extends JControllerAdmin
      * @param    string    $prefix    The prefix for the PHP class name.
      *
      * @return    JModel
-     * @since    2.0
+     * @since     0.0.5
      */
     public function getModel($name = 'Sitemap', $prefix = 'ZtmapModel', $config = array('ignore_request' => true))
     {

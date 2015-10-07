@@ -20,6 +20,7 @@
 // no direct access
 defined('_JEXEC') or die;
 
+// Core require
 require_once 'bootstrap.php';
 
 $controller = JControllerLegacy::getInstance('Ztmap');

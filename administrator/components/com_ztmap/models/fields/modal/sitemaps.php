@@ -27,7 +27,7 @@ jimport('joomla.form.field');
  *
  * @package             Xmap
  * @subpackage          com_ztmap
- * @since               2.0
+ * @since               0.0.5
  */
 class JFormFieldModal_Sitemaps extends JFormField
 {

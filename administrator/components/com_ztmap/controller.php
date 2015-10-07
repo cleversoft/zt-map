@@ -31,7 +31,7 @@ jimport('joomla.application.component.controller');
 class ZtmapController extends JControllerLegacy
 {
 
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
 
@@ -49,9 +49,9 @@ class ZtmapController extends JControllerLegacy
         $document = JFactory::getDocument();
 
         // Set the default view name and format from the Request.
-        $vName = JRequest::getWord('view', 'sitemaps');
+        $vName = JFactory::getApplication()->input->getWord('view', 'sitemaps');
         $vFormat = $document->getType();
-        $lName = JRequest::getWord('layout', 'default');
+        $lName = JFactory::getApplication()->input->getWord('layout', 'default');
 
         // Get and render the view.
         if ($view = $this->getView($vName, $vFormat))
@@ -70,22 +70,27 @@ class ZtmapController extends JControllerLegacy
         }
     }
 
-    function navigator()
+    /**
+     * navigator task
+     * @return boolean
+     */
+    public function navigator()
     {
-        $db = JFactory::getDBO();
+
         $document = JFactory::getDocument();
         $app = JFactory::getApplication('administrator');
 
-        $id = JRequest::getInt('sitemap', 0);
-        $link = urldecode(JRequest::getVar('link', ''));
-        $name = JRequest::getCmd('e_name', '');
+        $id = JFactory::getApplication()->input->getInt('sitemap', 0);
         if (!$id)
         {
-            $id = $this->getDefaultSitemapId();
+            $id = $this->_getDefaultSitemapId();
         }
 
         if (!$id)
         {
+            /**
+             * @todo JError::raiseWarning() is deprecated
+             */
             JError::raiseWarning(500, JText::_('Ztmap_Not_Sitemap_Selected'));
             return false;
         }
@@ -103,23 +108,28 @@ class ZtmapController extends JControllerLegacy
         $view->navigator();
     }
 
-    function navigatorLinks()
+    /**
+     * navigatorLink task
+     * @return boolean
+     */
+    public function navigatorLinks()
     {
 
-        $db = JFactory::getDBO();
         $document = JFactory::getDocument();
         $app = JFactory::getApplication('administrator');
 
-        $id = JRequest::getInt('sitemap', 0);
-        $link = urldecode(JRequest::getVar('link', ''));
-        $name = JRequest::getCmd('e_name', '');
+        $id = JFactory::getApplication()->input->getInt('sitemap', 0);
+
         if (!$id)
         {
-            $id = $this->getDefaultSitemapId();
+            $id = $this->_getDefaultSitemapId();
         }
 
         if (!$id)
         {
+            /**
+             * @todo JError::raiseWarning() is deprecated
+             */
             JError::raiseWarning(500, JText::_('Ztmap_Not_Sitemap_Selected'));
             return false;
         }
@@ -137,7 +147,7 @@ class ZtmapController extends JControllerLegacy
         $view->navigatorLinks();
     }
 
-    private function getDefaultSitemapId()
+    private function _getDefaultSitemapId()
     {
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);

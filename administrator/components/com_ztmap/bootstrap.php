@@ -25,9 +25,9 @@ jimport('joomla.form.form');
 jimport('joomla.application.component.controller');
 
 JTable::addIncludePath(JPATH_COMPONENT . '/tables');
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 JForm::addFieldPath(JPATH_COMPONENT . '/models/fields');
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
 // Assets
 $document = JFactory::getDocument();
@@ -36,5 +36,3 @@ $document->addStyleSheet('components/com_ztmap/assets/vendor/font-awesome/css/fo
 
 // Register helper class
 JLoader::register('ZtmapHelper', dirname(__FILE__) . '/helpers/ztmap.php');
-
-
