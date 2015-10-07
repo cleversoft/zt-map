@@ -27,7 +27,7 @@ jimport('joomla.application.component.view');
  *
  * @package      Ztmap
  * @subpackage   com_ztmap
- * @since        2.0
+ * @since        0.0.5
  */
 class ZtmapViewXml extends JViewLegacy
 {
@@ -36,7 +36,7 @@ class ZtmapViewXml extends JViewLegacy
     protected $print;
     protected $_obLevel;
 
-    function display($tpl = null)
+    public function display($tpl = null)
     {
         // Initialise variables.
         $app = JFactory::getApplication();
@@ -146,7 +146,7 @@ class ZtmapViewXml extends JViewLegacy
         exit;
     }
 
-    function displayXSL()
+    public function displayXSL()
     {
         $this->setLayout('default');
 
