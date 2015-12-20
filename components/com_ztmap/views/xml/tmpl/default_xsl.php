@@ -59,14 +59,14 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     }
     .sortup {
         background-position: right center;
-        background-image: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/sortup.gif);
+        background-image: url(<?php echo JUri::base(); ?>components/com_ztmap/assets/images/sortup.gif);
         background-repeat: no-repeat;
         font-style:italic;
         white-space:pre;
     }
     .sortdown {
         background-position: right center;
-        background-image: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/sortdown.gif);
+        background-image: url(<?php echo JUri::base(); ?>components/com_ztmap/assets/images/sortdown.gif);
         background-repeat: no-repeat;
         font-style:italic;
         white-space:pre;
@@ -116,7 +116,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     }
     .editable {
         cursor:pointer;
-        background: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/arrow.gif) top right no-repeat;
+        background: url(<?php echo JUri::base(); ?>components/com_ztmap/assets/images/arrow.gif) top right no-repeat;
         padding-right:18px;
         padding-right:18px;
         border:1px solid #ffffff;
@@ -145,13 +145,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     #filter_options {border-radius: 5px; background-color:#fff;padding: 3px;}
     .toggle-excluded {
         width: 16px; height: 16px; display: inline-block; float: left; cursor: pointer;margin-right: 5px;
-        background: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/tick.png) no-repeat;
+        background: url(<?php echo JUri::base(); ?>components/com_ztmap/assets/images/tick.png) no-repeat;
     }
     .excluded {
       text-decoration:line-through;
     }
     .excluded .toggle-excluded {
-        background: url(<?php echo JUri::base(); ?>components/com_xmap/assets/images/unpublished.png) no-repeat;
+        background: url(<?php echo JUri::base(); ?>components/com_ztmap/assets/images/unpublished.png) no-repeat;
     }
     div.imagelist {
         border: 1px solid #ccc;
@@ -353,7 +353,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
 
     function changeProperty(el,property) {
         new Request.JSON({
-            url: '<?php echo JRoute::_('index.php?option=com_xmap&format=json&task=ajax.editElement&action=changeProperty',false); ?>',
+            url: '<?php echo JRoute::_('index.php?option=com_ztmap&format=json&task=ajax.editElement&action=changeProperty',false); ?>',
             onComplete: checkChangeResult.bind(divOptions),
             method: 'get'
         }).send('<?php echo JSession::getFormToken(); ?>=1&id='+sitemapid+'&uid='+divOptions.uid+'&itemid='+divOptions.itemid+'&property='+property+'&value='+el.innerHTML);
@@ -365,7 +365,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     function toggleExcluded(el,itemid, uid){
         row = $(el).getParent('tr');
         new Request.JSON({
-            url: '<?php echo JRoute::_('index.php?option=com_xmap&format=json&task=ajax.editElement&action=toggleElement',false); ?>',
+            url: '<?php echo JRoute::_('index.php?option=com_ztmap&format=json&task=ajax.editElement&action=toggleElement',false); ?>',
             onComplete: checkToggleExcluded.bind(row),
             method: 'get'
         }).send('<?php echo JSession::getFormToken(); ?>=1&id='+sitemapid+'&uid='+uid+'&itemid='+itemid);
@@ -409,7 +409,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
     </div>
     <div id="instructions">
         <div>
-            <?php $sitemapUrl = 'index.php?option=com_xmap&view=xml&id='.$this->item->id; ?>
+            <?php $sitemapUrl = 'index.php?option=com_ztmap&view=xml&id='.$this->item->id; ?>
             <?php if (!$this->user->get('id')): ?>
             <p><?php echo JText::sprintf('COM_ZTMAP_LOGIN_AS_ADMIN_EDIT_SITEMAP', JRoute::_('index.php?option=com_users&view=login&return='.base64_encode($sitemapUrl))); ?></p>
             <?php else: ?>
@@ -417,8 +417,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>',"\n";
             <p><?php echo JText::_('COM_ZTMAP_XML_SITEMAP_HELP'); ?></p>
             <p dir="ltr"><b><?php echo JText::_('COM_ZTMAP_XML_SITEMAP_URL'); ?></b>: <?php echo $sitemapUrl; ?></p>
             <div id="filter_options">
-                <form method="get" action="<?php echo JRoute::_('index.php?option=com_xmap&view=xml'); ?>">
-                    <input type="hidden" name="option" value="com_xmap" />
+                <form method="get" action="<?php echo JRoute::_('index.php?option=com_ztmap&view=xml'); ?>">
+                    <input type="hidden" name="option" value="com_ztmap" />
                     <input type="hidden" name="view" value="xml" />
                     <input type="hidden" name="id" value="<?php echo $this->item->id; ?>" />
                     <label><input onClick="this.form.submit();"<?php echo ($showTitle? ' checked="checked"':''); ?> type="checkbox" value="1" name="filter_showtitle" /><?php echo JText::_('COM_ZTMAP_DISPLAY_TITLE'); ?></label>

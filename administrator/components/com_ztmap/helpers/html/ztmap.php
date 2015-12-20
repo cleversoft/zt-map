@@ -23,8 +23,8 @@ defined('_JEXEC') or die;
 JTable::addIncludePath(JPATH_COMPONENT . '/tables');
 
 /**
- * @package       Xmap
- * @subpackage    com_xmap
+ * @package       Ztmap
+ * @subpackage    com_ztmap
  */
 abstract class JHtmlZtmap
 {

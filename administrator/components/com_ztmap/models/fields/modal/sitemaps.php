@@ -25,7 +25,7 @@ jimport('joomla.form.field');
 /**
  * Supports a modal sitemap picker.
  *
- * @package             Xmap
+ * @package             Ztmap
  * @subpackage          com_ztmap
  * @since               0.0.5
  */

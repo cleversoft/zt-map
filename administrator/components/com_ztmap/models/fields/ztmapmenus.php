@@ -24,7 +24,7 @@ jimport('joomla.html.html');
 require_once JPATH_LIBRARIES . '/joomla/form/fields/list.php';
 
 /**
- * Menus Form Field class for the Xmap Component
+ * Menus Form Field class for the Ztmap Component
  *
  * @package      Ztmap
  * @subpackage   com_ztmap

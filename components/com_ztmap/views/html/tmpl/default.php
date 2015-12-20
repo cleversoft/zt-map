@@ -26,7 +26,7 @@ if ($this->displayer->canEdit)
 {
     $live_site = JURI::root();
     JHTML::_('behavior.framework', true);
-    $ajaxurl = "{$live_site}index.php?option=com_xmap&format=json&task=ajax.editElement&action=toggleElement&" . JSession::getFormToken() . '=1';
+    $ajaxurl = "{$live_site}index.php?option=com_ztmap&format=json&task=ajax.editElement&action=toggleElement&" . JSession::getFormToken() . '=1';
 
     $css = '.xmapexcl img{ border:0px; }' . "\n";
     $css .= '.xmapexcloff { text-decoration:line-through; }';
@@ -55,9 +55,9 @@ if ($this->displayer->canEdit)
             if (response.result == 'OK') {
                 var state = response.state;
                 if (state==0) {
-                    imgs[0].src='{$live_site}/components/com_xmap/assets/images/unpublished.png';
+                    imgs[0].src='{$live_site}/components/com_ztmap/assets/images/unpublished.png';
                 } else {
-                    imgs[0].src='{$live_site}/components/com_xmap/assets/images/tick.png';
+                    imgs[0].src='{$live_site}/components/com_ztmap/assets/images/tick.png';
                 }
             } else {
                 alert('The element couldn\\'t be published or upublished!');
@@ -105,7 +105,7 @@ if ($this->displayer->canEdit)
     <?php echo $this->loadTemplate('items'); ?>
 
     <?php if ($params->get('include_link', 1)) : ?>
-        <div class="muted" style="font-size:10px;width:100%;clear:both;text-align:center;">Powered by <a href="http://www.jooxmap.com/">Xmap</a></div>
+        <div class="muted" style="font-size:10px;width:100%;clear:both;text-align:center;">Powered by <a href="http://www.zootemplate.com/">Ztmap</a></div>
     <?php endif; ?>
 
     <span class="article_separator">&nbsp;</span>

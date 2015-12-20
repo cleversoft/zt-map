@@ -22,7 +22,7 @@ defined('_JEXEC') or die;
 
 require_once(JPATH_COMPONENT_SITE . '/displayer.php');
 
-class ZtmapNavigatorDisplayer extends XmapDisplayer
+class ZtmapNavigatorDisplayer extends ZtmapDisplayer
 {
 
     public function __construct(&$config, &$sitemap)
@@ -39,7 +39,7 @@ class ZtmapNavigatorDisplayer extends XmapDisplayer
         {
             $node->selectable = true;
         }
-        // For extentions that doesn't set this property as this is new in Xmap 1.2.3
+        // For extentions that doesn't set this property as this is new in Ztmap 1.2.3
         if (!isset($node->expandible))
         {
             $node->expandible = true;
@@ -80,7 +80,7 @@ class ZtmapNavigatorDisplayer extends XmapDisplayer
                     $node->expandible = true;
                     $node->selectable = true;
                     // Prepare the node link
-                    XmapHelper::prepareMenuItem($node);
+                    ZtmapHelper::prepareMenuItem($node);
                     if ($item->home)
                     {
                         $node->link = JURI::root();

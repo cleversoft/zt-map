@@ -24,13 +24,13 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.view');
 
 /**
- * HTML Site map View class for the Xmap component
+ * HTML Site map View class for the Ztmap component
  *
- * @package         Xmap
- * @subpackage      com_xmap
+ * @package         Ztmap
+ * @subpackage      com_ztmap
  * @since           0.0.5
  */
-class XmapViewHtml extends JViewLegacy
+class ZtmapViewHtml extends JViewLegacy
 {
 
     protected $state;
@@ -51,7 +51,7 @@ class XmapViewHtml extends JViewLegacy
         $this->item = $this->get('Item');
         $this->items = $this->get('Items');
 
-        $this->canEdit = JFactory::getUser()->authorise('core.admin', 'com_xmap');
+        $this->canEdit = JFactory::getUser()->authorise('core.admin', 'com_ztmap');
 
         // Check for errors.
         if (count($errors = $this->get('Errors')))
@@ -64,14 +64,14 @@ class XmapViewHtml extends JViewLegacy
         // Add router helpers.
         $this->item->slug = $this->item->alias ? ($this->item->id . ':' . $this->item->alias) : $this->item->id;
 
-        $this->item->rlink = JRoute::_('index.php?option=com_xmap&view=html&id=' . $this->item->slug);
+        $this->item->rlink = JRoute::_('index.php?option=com_ztmap&view=html&id=' . $this->item->slug);
 
         // Create a shortcut to the paramemters.
         $params = &$this->state->params;
         $offset = $this->state->get('page.offset');
         if ($params->get('include_css', 0))
         {
-            $doc->addStyleSheet(JURI::root() . 'components/com_xmap/assets/css/xmap.css');
+            $doc->addStyleSheet(JURI::root() . 'components/com_ztmap/assets/css/xmap.css');
         }
 
         // If a guest user, they may be able to log in to view the full article
@@ -83,12 +83,12 @@ class XmapViewHtml extends JViewLegacy
                 // Redirect to login
                 $uri = JFactory::getURI();
                 $app->redirect(
-                        'index.php?option=com_users&view=login&return=' . base64_encode($uri), JText::_('Xmap_Error_Login_to_view_sitemap')
+                        'index.php?option=com_users&view=login&return=' . base64_encode($uri), JText::_('Ztmap_Error_Login_to_view_sitemap')
                 );
                 return;
             } else
             {
-                JError::raiseWarning(403, JText::_('Xmap_Error_Not_auth'));
+                JError::raiseWarning(403, JText::_('Ztmap_Error_Not_auth'));
                 return;
             }
         }
@@ -101,7 +101,7 @@ class XmapViewHtml extends JViewLegacy
 
         // Load the class used to display the sitemap
         $this->loadTemplate('class');
-        $this->displayer = new XmapHtmlDisplayer($params, $this->item);
+        $this->displayer = new ZtmapHtmlDisplayer($params, $this->item);
 
         $this->displayer->setJView($this);
         $this->displayer->canEdit = $this->canEdit;
