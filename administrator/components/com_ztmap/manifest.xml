@@ -38,7 +38,7 @@
         <folder>views</folder>
     </files>
     <languages folder="front/language">
-        <language tag="en-GB">en-GB.com_ztmap.ini</language>        
+        <language tag="en-GB">en-GB/en-GB.com_ztmap.ini</language>        
     </languages>
     <images folder="admin">
         <folder>images</folder>
@@ -48,17 +48,18 @@
         <files folder="admin">
             <filename>ztmap.php</filename>
             <filename>controller.php</filename>
+			<filename>bootstrap.php</filename>
             <filename>index.html</filename>
             <filename>LICENSE.txt</filename>
             <folder>assets</folder>
+			<folder>controllers</folder>
             <folder>elements</folder>
+			<folder>helpers</folder>    
             <folder>images</folder>
-            <folder>install</folder>
-            <folder>helpers</folder>
-            <folder>controllers</folder>
+            <folder>install</folder>                    
+			<folder>models</folder>
             <folder>tables</folder>
-            <folder>views</folder>
-            <folder>models</folder>
+            <folder>views</folder>            
         </files>
         <languages folder="admin/language">
             <language tag="en-GB">en-GB/en-GB.com_ztmap.ini</language>
