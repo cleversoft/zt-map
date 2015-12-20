@@ -66,7 +66,7 @@ class ZtmapControllerSitemaps extends JControllerAdmin
         /**
          * @todo Use JInput instead
          */
-        $cid = JRqeuest::getVar('cid', 0, '', 'array');
+        $cid = JRequest::getVar('cid', 0, '', 'array');
         $id = @$cid[0];
 
         if (!$id)
