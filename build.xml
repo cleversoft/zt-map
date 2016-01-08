@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Zt Map" default="prepare">
+
+    <!-- ============================================  -->
+    <!-- Target: prepare                               -->
+    <!-- ============================================  -->
+    <target name="prepare">
+        <echo msg="Making directory ./build" />
+        <mkdir dir="./build" />
+	
+	<echo msg="Copying administrator files..." />
+	<mkdir dir="./build/administrator" />
+	<copy todir="./build/administrator">
+	  <fileset dir="administrator">
+	      <include name="**"></include>
+	      <exclude name="**/languages/**"></exclude>
+	  </fileset>
+	</copy>
+	<copy file="ztmap.xml" tofile="./build/administrator" overwrite="true"/>
+	<copy file="script.installer.php" tofile="./build/administrator" overwrite="true"/>
+	
+	<echo msg="Copying site files..." />
+	<mkdir dir="./build/site" />
+	
+    </target>
+
+  
+</project>
